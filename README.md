@@ -1,4 +1,4 @@
-# Econometria I — gasto de campanha e votos
+# Econometria I — Gasto de Campanha e Votos
 
 Trabalho de Econometria I de Eduardo Takaesu Coelho e Pedro Berta Farias.
 
