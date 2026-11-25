@@ -19,6 +19,10 @@ bases <- data.frame(
 
 baixar_e_extrair <- function(url, arquivo) {
   destino <- file.path("Dados", arquivo)
+  if (file.exists(arquivo) && isTRUE(file.info(arquivo)$size > 1000)) {
+    message("Ja esta na pasta do projeto, nao baixei de novo: ", arquivo)
+    return(invisible(arquivo))
+  }
   if (file.exists(destino) && isTRUE(file.info(destino)$size > 1000)) {
     message("Ja existe, nao baixei de novo: ", destino)
     return(invisible(destino))
