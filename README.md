@@ -8,7 +8,7 @@ A pergunta do trabalho é o efeito do gasto de campanha sobre os votos de candid
 
 - `Trabalho_Final.R`, na raiz: script do trabalho. Ele carrega os pacotes, monta a base, estima os modelos, grava as figuras e roda os testes.
 - `baixar_bases.R`, na raiz: baixa os zips oficiais do TSE, extrai só o CSV do Brasil usado no trabalho e apaga o zip.
-- `Dados/`: bases do Brasil. Neste repositório está `consulta_cand_2022_BRASIL.csv` (cerca de 17 MB).
+- `Dados/`: pasta das bases do Brasil. Os três CSV não vão no GitHub. O `baixar_bases.R` grava eles aí.
 - `figuras/`: PNG gerados pelo `Trabalho_Final.R` quando ele é executado. Essa pasta não vem pronta no clone.
 - `Regras/`: regras, skills e agents do Cursor copiados de `.cursor/` (`rules/`, `skills/` e `agents/`).
 - `requirements.txt`: lista dos pacotes de R para instalar. Este é um projeto em R (R 4.5.x). O arquivo não carrega os pacotes. Quem roda o script ainda precisa das linhas `library` dentro do `Trabalho_Final.R`.
