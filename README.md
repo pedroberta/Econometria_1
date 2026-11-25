@@ -6,51 +6,51 @@ A pergunta do trabalho é o efeito do gasto de campanha sobre os votos de candid
 
 ## O que tem em cada pasta
 
-- `Trabalho_Final.R`, na raiz: script do trabalho.
-- `baixar_bases.R`, na raiz: baixa as duas bases grandes para `Dados/`.
-- `Dados/`: bases do Brasil. Neste repositório está apenas `consulta_cand_2022_BRASIL.csv` (cerca de 17 MB).
+- `Trabalho_Final.R`, na raiz: script do trabalho. Ele carrega os pacotes, monta a base, estima os modelos, grava as figuras e roda os testes.
+- `baixar_bases.R`, na raiz: baixa os zips oficiais do TSE, extrai só o CSV do Brasil usado no trabalho e apaga o zip.
+- `Dados/`: bases do Brasil. Neste repositório está `consulta_cand_2022_BRASIL.csv` (cerca de 17 MB).
+- `figuras/`: PNG gerados pelo `Trabalho_Final.R` quando ele é executado. Essa pasta não vem pronta no clone.
 - `Regras/`: regras, skills e agents do Cursor copiados de `.cursor/` (`rules/`, `skills/` e `agents/`).
-- `requirements.txt`: pacotes de R usados pelo script. Este é um projeto em R (R 4.5.x).
+- `requirements.txt`: lista dos pacotes de R para instalar. Este é um projeto em R (R 4.5.x). O arquivo não carrega os pacotes. Quem roda o script ainda precisa das linhas `library` dentro do `Trabalho_Final.R`.
+
+## Pacotes
+
+Instale, no R, os nomes que estão em `requirements.txt`:
+
+```r
+install.packages(c("data.table", "AER", "stargazer", "sandwich"))
+```
+
+`AER` traz junto `lmtest`, `sandwich` e `car`, usados nos testes.
 
 ## Como executar
 
-O diretório de trabalho tem de ser a pasta do projeto, isto é, a pasta que contém `Trabalho_Final.R`.
+O diretório de trabalho tem de ser a pasta do projeto, a que contém `Trabalho_Final.R`.
 
-No R:
-
-```r
-source("Trabalho_Final.R")
-```
-
-No terminal, a partir dessa mesma pasta:
-
-```text
-Rscript Trabalho_Final.R
-```
-
-O script usa os pacotes listados em `requirements.txt`: `data.table`, `AER`, `stargazer` e `sandwich`.
-
-Ele procura cada CSV primeiro na pasta do projeto e, se não achar, em `Dados/`. Os três nomes são:
-
-- `consulta_cand_2022_BRASIL.csv`
-- `despesas_contratadas_candidatos_2022_BRASIL.csv`
-- `votacao_candidato_munzona_2022_BRASIL.csv`
-
-A cópia versionada da base de candidatos está em `Dados/consulta_cand_2022_BRASIL.csv`.
-
-## Bases grandes
-
-O GitHub recusa arquivos acima de 100 MB. Estas duas bases não estão neste repositório:
-
-- `despesas_contratadas_candidatos_2022_BRASIL.csv` — cerca de 1,3 GB (1.344.031.169 bytes)
-- `votacao_candidato_munzona_2022_BRASIL.csv` — cerca de 4,3 GB (4.298.074.975 bytes)
-
-O `baixar_bases.R` baixa os zips oficiais do TSE, extrai só o CSV do Brasil de cada um e apaga o zip. Os outros arquivos do pacote não são gravados. Na pasta do projeto:
+Se as bases grandes ainda não estiverem na máquina:
 
 ```r
 source("baixar_bases.R")
 ```
 
-Isso também pode substituir `consulta_cand_2022_BRASIL.csv` se esse arquivo ainda não existir em `Dados/`. Se o CSV já existir, o script não baixa de novo.
+Esse comando baixa três zips do TSE, extrai só estes CSV e apaga o zip:
 
-O `Trabalho_Final.R` procura cada CSV na pasta do projeto e, se não achar, em `Dados/`.
+- `consulta_cand_2022_BRASIL.csv`
+- `despesas_contratadas_candidatos_2022_BRASIL.csv` (cerca de 1,3 GB)
+- `votacao_candidato_munzona_2022_BRASIL.csv` (cerca de 4,3 GB)
+
+Os outros arquivos de cada zip não são gravados. Se o CSV já existir na pasta do projeto ou em `Dados/`, o script não baixa de novo.
+
+Depois:
+
+```r
+source("Trabalho_Final.R")
+```
+
+No terminal, a partir da mesma pasta:
+
+```text
+Rscript Trabalho_Final.R
+```
+
+O `Trabalho_Final.R` procura cada CSV primeiro na pasta do projeto e, se não achar, em `Dados/`. As figuras vão para `figuras/`.
