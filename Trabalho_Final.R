@@ -4,14 +4,27 @@ library(AER)
 library(stargazer)
 library(sandwich)
 
+arquivo_base <- function(nome) {
+  if (file.exists(nome)) {
+    return(nome)
+  }
+  em_dados <- file.path("Dados", nome)
+  if (file.exists(em_dados)) {
+    return(em_dados)
+  }
+  stop(
+    "Nao achei ", nome,
+    ". Coloque o arquivo na pasta do projeto ou em Dados/, ou rode baixar_bases.R."
+  )
+}
 
-Base_Candidatos <- fread(input = "consulta_cand_2022_BRASIL.csv", sep = ";" , encoding = "Latin-1")
+Base_Candidatos <- fread(input = arquivo_base("consulta_cand_2022_BRASIL.csv"), sep = ";" , encoding = "Latin-1")
 
 Base_Recortada_DF_APTO <- subset(Base_Candidatos, CD_CARGO == "6" & CD_SITUACAO_CANDIDATURA == 12)
 table(Base_Recortada_DF_APTO$DS_SIT_TOT_TURNO)
 
-Despesas_Contratadas <- fread(input = "despesas_contratadas_candidatos_2022_BRASIL.csv", sep = ";", encoding = "Latin-1")
-Votos_Munzona <- fread(input = "votacao_candidato_munzona_2022_BRASIL.csv", sep = ";", encoding = "Latin-1")
+Despesas_Contratadas <- fread(input = arquivo_base("despesas_contratadas_candidatos_2022_BRASIL.csv"), sep = ";", encoding = "Latin-1")
+Votos_Munzona <- fread(input = arquivo_base("votacao_candidato_munzona_2022_BRASIL.csv"), sep = ";", encoding = "Latin-1")
 
 class(Votos_Munzona$QT_VOTOS_NOMINAIS)
 
