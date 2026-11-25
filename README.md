@@ -45,10 +45,12 @@ O GitHub recusa arquivos acima de 100 MB. Estas duas bases não estão neste rep
 - `despesas_contratadas_candidatos_2022_BRASIL.csv` — cerca de 1,3 GB (1.344.031.169 bytes)
 - `votacao_candidato_munzona_2022_BRASIL.csv` — cerca de 4,3 GB (4.298.074.975 bytes)
 
-Para baixá-las para `Dados/`, publique cada arquivo num link direto (OneDrive, Google Drive ou Zenodo: ao abrir o link, o arquivo começa a baixar). Cole as duas URLs na tabela `bases` de `baixar_bases.R` e rode:
+O `baixar_bases.R` baixa os zips oficiais do TSE, extrai só o CSV do Brasil de cada um e apaga o zip. Os outros arquivos do pacote não são gravados. Na pasta do projeto:
 
 ```r
 source("baixar_bases.R")
 ```
 
-O `Trabalho_Final.R` passa a achar esses CSV em `Dados/`.
+Isso também pode substituir `consulta_cand_2022_BRASIL.csv` se esse arquivo ainda não existir em `Dados/`. Se o CSV já existir, o script não baixa de novo.
+
+O `Trabalho_Final.R` procura cada CSV na pasta do projeto e, se não achar, em `Dados/`.
