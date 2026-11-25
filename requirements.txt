@@ -1,0 +1,6 @@
+# Projeto em R (R 4.5.x).
+# Pacotes usados por Trabalho_Final.R:
+data.table
+AER
+stargazer
+sandwich

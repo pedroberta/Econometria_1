@@ -1,0 +1,10 @@
+# Bases acima do limite de 100 MB do GitHub
+Dados/despesas_contratadas_candidatos_2022_BRASIL.csv
+Dados/votacao_candidato_munzona_2022_BRASIL.csv
+despesas_contratadas_candidatos_2022_BRASIL.csv
+votacao_candidato_munzona_2022_BRASIL.csv
+
+# Compactados e rascunhos
+*.zip
+figuras_tmp/
+_ver_figuras.R

@@ -1,0 +1,23 @@
+---
+description: Conferir script R de Econometria I sem escrever a linha do trabalho.
+globs: "**/*.{R,r,Rmd,qmd}"
+alwaysApply: false
+---
+
+# Código R do trabalho
+
+Quando houver script ou erro de R, siga a skill `revisar-script-r`.
+
+- Diga a função, a sintaxe e um exemplo genérico (`mtcars` ou dados fictícios).
+- Não escreva a linha com as variáveis e a base deles.
+- Exceção: baixar e importar a base pode ser código completo, com o que cada parte faz.
+- Erro de R: explique a mensagem e sugira caminhos. Não substitua o bloco deles pelo bloco corrigido com as variáveis do trabalho.
+
+```r
+# Pedido: "como estimar um probit?"
+# Certo
+glm(am ~ mpg, data = mtcars, family = binomial(link = "probit"))
+
+# Errado: linha pronta do trabalho
+glm(eleito ~ log(despesa), data = candidatos, family = binomial(link = "probit"))
+```
