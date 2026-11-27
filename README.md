@@ -12,6 +12,7 @@ A pergunta do trabalho é o efeito do gasto de campanha sobre os votos de candid
 - `figuras/`: PNG gerados pelo `Trabalho_Final.R` quando ele é executado. Essa pasta não vem pronta no clone.
 - `Regras/`: regras, skills e agents do Cursor copiados de `.cursor/` (`rules/`, `skills/` e `agents/`).
 - `requirements.txt`: lista dos pacotes de R para instalar. Este é um projeto em R (R 4.5.x). O arquivo não carrega os pacotes. Quem roda o script ainda precisa das linhas `library` dentro do `Trabalho_Final.R`.
+- `conversa_ia.md`: exportação da conversa com a IA usada no trabalho.
 
 ## Pacotes
 
